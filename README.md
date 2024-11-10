@@ -4,7 +4,7 @@ New: Our testing code is currently under development and will be released soon.
 
 This repository contains the code for the paper *"Few-shot Stereo Matching with High Domain Adaptability Based on Adaptive Recursive Network"*. The training code is now released. Our testing code will be publicly available soon.
 
-## Getting Started
+## Getting Started and Example Usage
 
 ### Step 1: Prepare the Training Data
 
@@ -12,15 +12,39 @@ To begin, run the `get_training_data.py` script. This script will randomly sampl
 
 > **Note**: Use `--root_dir /path/to/your/SceneFlow/` to specify your `SceneFlow` directory.
 
+Run the script:
+
+```bash
+python get_training_data.py --root_dir /path/to/your/SceneFlow/ --num_processes 4 --images_num 500
+```
+
 ### Step 2: Prepare the Testing Data
 
 Similarly, run the `get_testing_data.py` script to sample image pairs for the testing dataset. The images will be saved in the `testing_patch` folder.
 
 > **Note**: Use `--root_dir /path/to/your/SceneFlow/` to specify your `SceneFlow` directory.
 
+Run the script:
+
+```bash
+python get_testing_data.py --root_dir /path/to/your/SceneFlow/ --num_processes 4 --images_num 500
+```
+
 ### Step 3: Train the Model
 
 After generating the training and testing datasets, you can start training the model by running `train.py`. This script will read the training and testing data from the `training_patchs` and `testing_patch` folders, respectively. The trained model will be saved in the `good_model` directory.
+
+Run the training script:
+
+```bash
+python train.py --epoch 500
+```
+
+### Training Script Command-line Arguments
+
+The `train.py` script supports the following command-line argument:
+
+- `--epoch`: Specifies the number of epochs to train the model (default is 500).
 
 ## Directory Structure
 
@@ -28,26 +52,6 @@ After generating the training and testing datasets, you can start training the m
 - `training_patchs/`: Directory where sampled training image pairs are stored.
 - `testing_patch/`: Directory where sampled testing image pairs are stored.
 - `good_model/`: Directory where the trained model is saved.
-
-## Example Usage
-
-1. Run `get_training_data.py`:
-
-   ```bash
-   python get_training_data.py --root_dir /path/to/your/SceneFlow/ --num_processes 4 --images_num 500
-   ```
-
-2. Run `get_testing_data.py`:
-
-   ```bash
-   python get_testing_data.py --root_dir /path/to/your/SceneFlow/ --num_processes 4 --images_num 500
-   ```
-
-3. Run `train.py` to train the model:
-
-   ```bash
-   python train.py
-   ```
 
 Now, you are ready to train the model and achieve high domain adaptability with few-shot learning!
 
