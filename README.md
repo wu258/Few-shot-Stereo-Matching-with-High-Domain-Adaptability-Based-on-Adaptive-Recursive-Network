@@ -53,5 +53,4 @@ The `train.py` script supports the following command-line argument:
 - `testing_patch/`: Directory where sampled testing image pairs are stored.
 - `good_model/`: Directory where the trained model is saved.
 
-Now, you are ready to train the model and achieve high domain adaptability with few-shot learning!
 
